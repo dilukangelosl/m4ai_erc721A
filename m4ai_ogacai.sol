@@ -21,7 +21,7 @@ contract M4AI_OGACAI is ERC721A, Ownable {
     uint256 public maxSupply = 500;
     uint16 public maxMintAmountPerTransaction = 20;
     //used to pause the contract
-    bool public paused = true;
+    bool public wl = true;
     bool public saleOn = true;
 
     constructor(string memory _baseUrl)
@@ -31,7 +31,7 @@ contract M4AI_OGACAI is ERC721A, Ownable {
     }
 
     //This function will be used to extend the project with more capabilities
-    function setExternalContract(address _bAddress) public onlyOwner {
+    function setExternalContract(address _bAddress) public onlyOwnerOrPartner {
         externalContract = _bAddress;
     }
 
@@ -50,7 +50,7 @@ contract M4AI_OGACAI is ERC721A, Ownable {
 
     function mint(uint256 _mintAmount) external payable {
         if (msg.sender != owner()) {
-            if(paused){
+            if(wl){
                 require((ogac.balanceOf(msg.sender) > 0 || (m4.balanceOf(msg.sender) > 0)), "Only M4 and OGAC Holders May Mint Now.");
             }
             require(saleOn, "Sale Has Not Started.");
@@ -70,7 +70,7 @@ contract M4AI_OGACAI is ERC721A, Ownable {
     }
 
     function crossmint(address _to, uint256 _mintAmount) public payable {
-       if(paused){
+       if(wl){
                 require((ogac.balanceOf(msg.sender) > 0 || (m4.balanceOf(msg.sender) > 0)), "Only M4 and OGAC Holders May Mint Now.");
             }
         require(_mintAmount > 0, "Mint amount should be greater than 0");
@@ -114,27 +114,27 @@ contract M4AI_OGACAI is ERC721A, Ownable {
                 : "";
     }
 
-    function setCost(uint256 _newCost) public onlyOwner {
+    function setCost(uint256 _newCost) public onlyOwnerOrPartner {
         cost = _newCost;
     }
 
-    function setmaxMintAmountPerTransaction(uint16 _amount) public onlyOwner {
+    function setmaxMintAmountPerTransaction(uint16 _amount) public onlyOwnerOrPartner {
         maxMintAmountPerTransaction = _amount;
     }
 
-    function setMaxSupply(uint256 _supply) public onlyOwner {
+    function setMaxSupply(uint256 _supply) public onlyOwnerOrPartner {
         maxSupply = _supply;
     }
 
-    function setBaseURI(string memory _newBaseURI) public onlyOwner {
+    function setBaseURI(string memory _newBaseURI) public onlyOwnerOrPartner {
         baseApiURI = _newBaseURI;
     }
 
-    function setPauseStatus(bool _val) public onlyOwner {
-        paused = _val;
+    function setWLStatus(bool _val) public onlyOwnerOrPartner {
+        wl = _val;
     }
 
-    function setSaleStatus(bool _val) public onlyOwner {
+    function setSaleStatus(bool _val) public onlyOwnerOrPartner {
         saleOn = _val;
     }
 
@@ -143,7 +143,7 @@ contract M4AI_OGACAI is ERC721A, Ownable {
         _;
     }
 
-    function setCrossmintAddress(address _crossmintAddress) public onlyOwner {
+    function setCrossmintAddress(address _crossmintAddress) public onlyOwnerOrPartner {
         crossmintAddress = _crossmintAddress;
     }
 
