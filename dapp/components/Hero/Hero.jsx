@@ -253,13 +253,13 @@ export default function Hero() {
             {btntext()}
           </button>
 
-          <CrossmintPayButton className="crossmint"
+          {/* <CrossmintPayButton className="crossmint"
                 clientId="4c4e8528-d568-4cd3-bd0f-61ce64ca3f59"
                 mintConfig={{"type":"erc-721","totalPrice":Web3.utils.fromWei((qty*info?.cost).toString(), "ether"),"_mintAmount":qty}}
                 onClick={() => {
                   console.log({"type":"erc-721","totalPrice":Web3.utils.fromWei((qty*info?.cost).toString(), "ether"),"_mintAmount":qty})
                 }}
-            />
+            /> */}
         </div>
       );
     } else {
