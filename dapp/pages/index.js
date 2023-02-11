@@ -17,7 +17,7 @@ export default function Home() {
         <title>M4OGACAI</title>
         <meta
           name="description"
-          content=""
+          content="Welcome to the home of M4AI/OGACAI AI collection on OpenSea. Discover the best items in this collection."
         />
         <link rel="icon" href="/favicon.ico" />
   
