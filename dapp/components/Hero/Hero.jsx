@@ -19,6 +19,12 @@ export default function Hero() {
   const [loading, setLoading] = useState(true);
   const [whitelistDataLoading, setWhitelisDataLoading] = useState(true);
   const [isSale,setIsSale] = useState(false);
+
+
+  const [wl, setWl] = useState(true);
+  const [saleOn, setSaleOn] = useState(false);
+  const [cost, setCost] = useState(false);
+
   const [show, setShow] = useState({
     show: false,
     title: "",
@@ -31,12 +37,11 @@ export default function Hero() {
 
 
   const [info, setInfo] = useState({
-    totalSupply:40,
-    maxSupply:0,
+    totalSupply:0,
+    maxSupply:500,
     cost:0,
-   
     maxMintAmountPerTransaction:1,
-    paused:false,
+    
    
 
   });
@@ -52,14 +57,18 @@ export default function Hero() {
   const handleClose = () => setShow(false);
 
   async function getEngine() {
-    toast("Loading contract...");
+    try {
+      toast("Loading contract...");
     setLoading(true);
     const data = await getAllInfo(library?.getSigner());
-    console.log("Contract info", data);
+    console.log("Contract info data", data);
     setInfo(data);
     setWhitelisDataLoading(false)
     setLoading(false);
     toast("Contract loaded, Happy minting!");
+    } catch (error) {
+      console.log(error)
+    }
   }
 
 
@@ -140,7 +149,7 @@ export default function Hero() {
 
   function saleStatus() {
     if (active) {
-      if (info.paused) {
+      if (false) {
         return "Sale is not Active";
       } else {
         if (info.whiteListingSale) {
@@ -197,7 +206,7 @@ export default function Hero() {
                   return;
                 }
 
-                if (info.paused) {
+                if (!info?.saleOn) {
                   return toast.error("Sale is not Active yet");
                 } 
 
@@ -260,7 +269,7 @@ export default function Hero() {
    
      if(!loading){
     
-        return `MINT PRICE : 0.18ETH`
+        return `${info?.wl?"WHITELISTING SALE: ":""}MINT PRICE : ${parseFloat(Web3.utils.fromWei(info?.cost.toString()))}ETH`
       
      }
   }
@@ -314,7 +323,7 @@ export default function Hero() {
               <div className="mintformgradient">
               <div className="mintform">
               
-                    {/* <img src="/popo.gif" alt="" className="mintlogo"/> */}
+                     <img src="/banner.gif" alt="" className="mintlogo"/> 
                    {!isSale &&  <Countdown date={cdate} renderer={renderer} />}
                   
                    {isSale && !active &&  <ConnectModal />}
@@ -322,9 +331,9 @@ export default function Hero() {
                     <h1 className="minttitle">{mintTitle()}</h1>
                     {/* <p className="mintdes">{mintDescription()} </p> */}
                    
-                    {whitelistDataLoading && showWhitelistingData()}
+                  
                     
-                    {isSale && active && !whitelistDataLoading  && showMintButtons()} 
+                    { active   && showMintButtons()} 
                     </>}
               </div>
               </div>

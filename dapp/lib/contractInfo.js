@@ -1,4 +1,4 @@
-const contractAddress = "0x980Bd891255C58C25C6008C4B7A387E43CD9cEC5";
+const contractAddress = "0x38A70440D08CE153fe38BaE183031dAA665EF3C7";
 const abi = [
   {
     inputs: [{ internalType: "string", name: "_baseUrl", type: "string" }],
@@ -244,13 +244,6 @@ const abi = [
   },
   {
     inputs: [],
-    name: "paused",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "renounceOwnership",
     outputs: [],
     stateMutability: "nonpayable",
@@ -277,6 +270,13 @@ const abi = [
     name: "safeTransferFrom",
     outputs: [],
     stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "saleOn",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -327,6 +327,20 @@ const abi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "bool", name: "_val", type: "bool" }],
+    name: "setSaleStatus",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "bool", name: "_val", type: "bool" }],
+    name: "setWLStatus",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [{ internalType: "uint16", name: "_amount", type: "uint16" }],
     name: "setmaxMintAmountPerTransaction",
     outputs: [],
@@ -345,13 +359,6 @@ const abi = [
     name: "symbol",
     outputs: [{ internalType: "string", name: "", type: "string" }],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "togglePause",
-    outputs: [],
-    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -393,6 +400,12 @@ const abi = [
     stateMutability: "nonpayable",
     type: "function",
   },
+  {
+    inputs: [],
+    name: "wl",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
 ];
-
 export { contractAddress, abi };

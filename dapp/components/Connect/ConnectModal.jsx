@@ -35,7 +35,7 @@ export default function ConnectModal() {
       return (
         <a
           className="btn btn-clear"
-          href="https://metamask.app.link/dapp/popopopopopo.web.app/"
+          href="https://metamask.app.link/dapp/www.mylifeai.io/"
         >
           <img src="/mbtn.png" alt="metamask button" width="40" /> Metamask
         </a>

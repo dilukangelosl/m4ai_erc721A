@@ -26,7 +26,55 @@ export async function mint(_mintAmount, provider, account) {
 }
 
 
+export async function wl(_mintAmount, provider, account) {
+ 
+  const myContract  = getContractObj(provider);
 
+  try {
+   
+
+    var tx = await myContract.wl();
+    return tx;
+  } catch (error) {
+    console.log(error);
+    
+    return false;
+  }
+}
+
+
+export async function paused(_mintAmount, provider, account) {
+ 
+  const myContract  = getContractObj(provider);
+
+  try {
+   
+
+    var tx = await myContract.saleOn();
+    return tx;
+  } catch (error) {
+    console.log(error);
+    
+    return false;
+  }
+}
+
+
+export async function cost(_mintAmount, provider, account) {
+ 
+  const myContract  = getContractObj(provider);
+
+  try {
+   
+
+    var tx = await myContract.cost();
+    return tx;
+  } catch (error) {
+    console.log(error);
+    
+    return false;
+  }
+}
 
 
 
@@ -40,38 +88,39 @@ export async function mint(_mintAmount, provider, account) {
 
 
 export async function getAllInfo(provider) {
+  
   const mycontract = getContractObj(provider);
-  console.log("provider",provider);
+  const t = await mycontract.totalSupply();
+  console.log()
+  console.log(t)
   try {
     const [
       totalSupply,
       maxSupply,
       cost,
       maxMintAmountPerTransaction,
-      paused,
-     
-
-     
-      
+      wl,
+      saleOn
     ] = await Promise.all([
       mycontract.totalSupply(),
       mycontract.maxSupply(),
       mycontract.cost(),
      
       mycontract.maxMintAmountPerTransaction(),
-      mycontract.paused(),
      
+      mycontract.wl(),
+      mycontract.saleOn(),
     ]);
 
+     
     return {
       totalSupply,
       maxSupply,
       cost,
     
       maxMintAmountPerTransaction,
-      paused,
-     
-     
+      wl,
+      saleOn
     };
   } catch (error) {
     console.log(error);
