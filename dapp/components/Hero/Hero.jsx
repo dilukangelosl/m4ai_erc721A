@@ -184,6 +184,7 @@ export default function Hero() {
   function showMintButtons() {
     if (true) {
       return (
+       
         <div className="btncontainer">
          
           <div className="qtycontrols">
@@ -332,7 +333,9 @@ export default function Hero() {
                     {/* <p className="mintdes">{mintDescription()} </p> */}
                    
                   
-                    
+                    {active &&  <div className="supply">
+                        {info.totalSupply.toString()}/500
+                      </div>}
                     { active   && showMintButtons()} 
                     </>}
               </div>
