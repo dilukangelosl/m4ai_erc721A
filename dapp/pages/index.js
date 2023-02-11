@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Toaster position="top-center" reverseOrder={false} />
       <Head>
-        <title>popo</title>
+        <title>M4OGACAI</title>
         <meta
           name="description"
           content=""
