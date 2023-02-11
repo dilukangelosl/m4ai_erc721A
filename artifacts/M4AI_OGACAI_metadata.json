@@ -536,6 +536,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "saleOn",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -621,6 +634,32 @@
 			{
 				"inputs": [
 					{
+						"internalType": "bool",
+						"name": "_val",
+						"type": "bool"
+					}
+				],
+				"name": "setPauseStatus",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "_val",
+						"type": "bool"
+					}
+				],
+				"name": "setSaleStatus",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint16",
 						"name": "_amount",
 						"type": "uint16"
@@ -661,13 +700,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "togglePause",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -734,13 +766,6 @@
 					}
 				],
 				"name": "transferOwnership",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "withdraw",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -955,11 +980,11 @@
 			]
 		},
 		"contracts/M4AI/m4ai_ogacai.sol": {
-			"keccak256": "0x8ed52ed204e1a1e59dd19cabbd1762d03fe8a8be7cf3a5f95ef172de1ae08c0f",
+			"keccak256": "0xfc8ea8b5dfb35a8a8093557381408ba3cb3b72f231cae69c7cb2a3bf59425456",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d8f2ce3b9408d14f4a39cda0d91b73b4d891ebace2b09f16835a1be904972ec0",
-				"dweb:/ipfs/QmY4rGaUnAUfEazEvMJ2dm39phXQoGSwQwkBFPM2xvmn9B"
+				"bzz-raw://3b43708e13de1a69dc9f0f8bde91909752f86765ed131aab50b4790f1b12190a",
+				"dweb:/ipfs/QmUYsX2yXcbbigTjEQe1qyfiFjgPPrkUrzuhv2vHEAckU7"
 			]
 		},
 		"https://github.com/chiru-labs/ERC721A/blob/main/contracts/ERC721A.sol": {

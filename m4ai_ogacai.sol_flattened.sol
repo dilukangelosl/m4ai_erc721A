@@ -2152,7 +2152,8 @@ contract M4AI_OGACAI is ERC721A, Ownable {
     uint256 public maxSupply = 500;
     uint16 public maxMintAmountPerTransaction = 20;
     //used to pause the contract
-    bool public paused = false;
+    bool public paused = true;
+    bool public saleOn = true;
 
     constructor(string memory _baseUrl)
         ERC721A("M4AI/OGACAI AI collection", "M4OGACAI")
@@ -2180,7 +2181,10 @@ contract M4AI_OGACAI is ERC721A, Ownable {
 
     function mint(uint256 _mintAmount) external payable {
         if (msg.sender != owner()) {
-           //require(!paused && ((ogac.balanceOf(msg.sender) > 0 || (m4.balanceOf(msg.sender) > 0))),"Only M4 and OGAC Holders May Mint Now.");
+            if(paused){
+                require((ogac.balanceOf(msg.sender) > 0 || (m4.balanceOf(msg.sender) > 0)), "Only M4 and OGAC Holders May Mint Now.");
+            }
+            require(saleOn, "Sale Has Not Started.");
             require(_mintAmount > 0, "Mint amount should be greater than 0");
             require(
                 _mintAmount <= maxMintAmountPerTransaction,
@@ -2197,7 +2201,9 @@ contract M4AI_OGACAI is ERC721A, Ownable {
     }
 
     function crossmint(address _to, uint256 _mintAmount) public payable {
-       //require(!paused && ((ogac.balanceOf(msg.sender) > 0 || (m4.balanceOf(msg.sender) > 0))),"Only M4 and OGAC Holders May Mint Now.");
+       if(paused){
+                require((ogac.balanceOf(msg.sender) > 0 || (m4.balanceOf(msg.sender) > 0)), "Only M4 and OGAC Holders May Mint Now.");
+            }
         require(_mintAmount > 0, "Mint amount should be greater than 0");
         require(
             _mintAmount <= maxMintAmountPerTransaction,
@@ -2255,8 +2261,12 @@ contract M4AI_OGACAI is ERC721A, Ownable {
         baseApiURI = _newBaseURI;
     }
 
-    function togglePause() public onlyOwner {
-        paused = !paused;
+    function setPauseStatus(bool _val) public onlyOwner {
+        paused = _val;
+    }
+
+    function setSaleStatus(bool _val) public onlyOwner {
+        saleOn = _val;
     }
 
     modifier onlyOwnerOrPartner() {
@@ -2268,14 +2278,5 @@ contract M4AI_OGACAI is ERC721A, Ownable {
         crossmintAddress = _crossmintAddress;
     }
 
-    function withdraw() public onlyOwnerOrPartner {
-        // This will pass 50% of the initial sale to partner
-        (bool hs, ) = payable(partnerAddr).call{
-            value: (address(this).balance * 50) / 100
-        }("");
-        require(hs);
-        // This will transfer the remaining contract balance to the owner.
-        (bool os, ) = payable(owner()).call{value: address(this).balance}("");
-        require(os);
-    }
+     
 }
