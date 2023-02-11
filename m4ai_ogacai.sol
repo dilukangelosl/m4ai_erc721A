@@ -17,7 +17,7 @@ contract M4AI_OGACAI is ERC721A, Ownable {
     address public crossmintAddress;
     string public baseApiURI;
 
-    uint256 public cost = 0.018 ether;
+    uint256 public cost = 0.020 ether;
     uint256 public maxSupply = 500;
     uint16 public maxMintAmountPerTransaction = 20;
     //used to pause the contract

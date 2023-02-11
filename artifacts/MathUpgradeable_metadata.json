@@ -34,10 +34,10 @@
 	},
 	"sources": {
 		"contracts/M4AI/m4ai_ogacai.sol_flattened.sol": {
-			"keccak256": "0x5445e890c3e9c22e3c7acc904cf487ccdbe2168ed4a2e5a6c1f28e3aa93db124",
+			"keccak256": "0xe74e62ba5a701c146a6cf8fe0b92281afc340d3c4ee19702728a77877e62cc1d",
 			"urls": [
-				"bzz-raw://4ba4b82b8e3de130d032b3e5db2b022a19ddc0084b6f895cd393b0e8e85944a8",
-				"dweb:/ipfs/QmTaCUzTRf7wqNoFwB92MpXM2XSjmGYvRwfqXRZHvKQPaD"
+				"bzz-raw://61ab9031c082a52d435807b71fa5766d76cf1c630f4093b501e197149bf61c42",
+				"dweb:/ipfs/Qmd9eMMRbBwYKwe3vENFirfAZYmVrzEvtoRiL4JWKXpbsx"
 			]
 		}
 	},
