@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >=0.8.17;
+pragma solidity ^0.8.17;
 
 import "https://github.com/chiru-labs/ERC721A/blob/main/contracts/ERC721A.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -13,8 +13,7 @@ contract M4AI_OGACAI is ERC721A, Ownable {
 
     using StringsUpgradeable for uint256;
     address externalContract;
-    address private partnerAddr =
-        address(0x4fdc1E3a6c0243a089D80E90D7bd0e060044E267);
+    address private partnerAddr = address(0x4fdc1E3a6c0243a089D80E90D7bd0e060044E267);
     address public crossmintAddress;
     string public baseApiURI;
 
@@ -50,13 +49,7 @@ contract M4AI_OGACAI is ERC721A, Ownable {
 
     function mint(uint256 _mintAmount) external payable {
         if (msg.sender != owner()) {
-            require(
-                !paused ||
-                    (!paused &&
-                        (ogac.balanceOf(msg.sender) > 0 ||
-                            (m4.balanceOf(msg.sender) > 0))),
-                "Only M4 and OGAC Holders May Mint Now."
-            );
+           //require(!paused && ((ogac.balanceOf(msg.sender) > 0 || (m4.balanceOf(msg.sender) > 0))),"Only M4 and OGAC Holders May Mint Now.");
             require(_mintAmount > 0, "Mint amount should be greater than 0");
             require(
                 _mintAmount <= maxMintAmountPerTransaction,
@@ -73,12 +66,7 @@ contract M4AI_OGACAI is ERC721A, Ownable {
     }
 
     function crossmint(address _to, uint256 _mintAmount) public payable {
-        require(
-            !paused ||
-                (!paused &&
-                    (ogac.balanceOf(_to) > 0 || (m4.balanceOf(_to) > 0))),
-            "Only M4 and OGAC Holders May Mint Now."
-        );
+       //require(!paused && ((ogac.balanceOf(msg.sender) > 0 || (m4.balanceOf(msg.sender) > 0))),"Only M4 and OGAC Holders May Mint Now.");
         require(_mintAmount > 0, "Mint amount should be greater than 0");
         require(
             _mintAmount <= maxMintAmountPerTransaction,
@@ -98,7 +86,7 @@ contract M4AI_OGACAI is ERC721A, Ownable {
         _safeMint(_to, _mintAmount);
     }
 
-     function _baseURI() internal view virtual override returns (string memory) {
+    function _baseURI() internal view virtual override returns (string memory) {
         return baseApiURI;
     }
 
