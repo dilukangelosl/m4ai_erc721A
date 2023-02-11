@@ -7,7 +7,7 @@ import axios from "axios";
 import ConnectModal from "../Connect/ConnectModal";
 import Web3 from 'web3';
 import Countdown from "react-countdown";
-
+import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 
 
 
@@ -252,6 +252,14 @@ export default function Hero() {
           >
             {btntext()}
           </button>
+
+          <CrossmintPayButton className="crossmint"
+                clientId="4c4e8528-d568-4cd3-bd0f-61ce64ca3f59"
+                mintConfig={{"type":"erc-721","totalPrice":Web3.utils.fromWei((qty*info?.cost).toString(), "ether"),"_mintAmount":qty}}
+                onClick={() => {
+                  console.log({"type":"erc-721","totalPrice":Web3.utils.fromWei((qty*info?.cost).toString(), "ether"),"_mintAmount":qty})
+                }}
+            />
         </div>
       );
     } else {
@@ -270,7 +278,7 @@ export default function Hero() {
    
      if(!loading){
     
-        return `${info?.wl?"WHITELISTING SALE: ":""}MINT PRICE : ${parseFloat(Web3.utils.fromWei(info?.cost.toString()))}ETH`
+        return `${info?.wl?"WHITELISTING SALE: ":"PUBLIC SALE: "}MINT PRICE : ${parseFloat(Web3.utils.fromWei(info?.cost.toString()))}ETH`
       
      }
   }

@@ -10,6 +10,7 @@
     "deploy:preview": "firebase hosting:channel:deploy metamask"
   },
   "dependencies": {
+    "@crossmint/client-sdk-react-ui": "^0.2.1-alpha.0",
     "@ethersproject/contracts": "^5.5.0",
     "@ethersproject/providers": "^5.5.2",
     "@ethersproject/shims": "^5.5.0",
