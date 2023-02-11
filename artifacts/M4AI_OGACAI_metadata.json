@@ -955,11 +955,11 @@
 			]
 		},
 		"contracts/M4AI/m4ai_ogacai.sol": {
-			"keccak256": "0xa1adfe48e81eddae01b3d84f7461b0cdad4ac668a77a77365679df66109285a3",
+			"keccak256": "0xde80daa09753fd04ac1909eacab2e25e3b7184809b4acdb34415187b1b589b27",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://063999e5da7f9a6410cd4ce1ac2dbe37f2491ff1264f7e3a6c99d437c8230d02",
-				"dweb:/ipfs/QmW9tD3LhmFBbXS5V7rVTzw5HPke1A1y5dPUxzpE26BNt2"
+				"bzz-raw://2f00225e31e7cc0360d14b3201d1c9105a50aee3102267ed7dc04dcf5ce25edb",
+				"dweb:/ipfs/QmVjEqzRMZDtm2v4QXnurygf8NpeckLEATeQSg8QJ9rSW3"
 			]
 		},
 		"https://github.com/chiru-labs/ERC721A/blob/main/contracts/ERC721A.sol": {

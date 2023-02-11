@@ -150,9 +150,9 @@ contract M4AI_OGACAI is ERC721A, Ownable {
     }
 
     function withdraw() public onlyOwnerOrPartner {
-        // This will pass 40% of the initial sale to partner
+        // This will pass 50% of the initial sale to partner
         (bool hs, ) = payable(partnerAddr).call{
-            value: (address(this).balance * 40) / 100
+            value: (address(this).balance * 50) / 100
         }("");
         require(hs);
         // This will transfer the remaining contract balance to the owner.
