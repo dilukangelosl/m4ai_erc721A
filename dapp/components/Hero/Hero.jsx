@@ -133,7 +133,7 @@ export default function Hero() {
     }
   }
   const btntext = () => {
-    return account ? `Mint` : "Connect Wallet";
+    return "Mint";
   };
 
   function showMintModal(state, title, link, progress, dismiss, buttonText) {
@@ -202,7 +202,7 @@ export default function Hero() {
             disabled={true}
             onClick={async () => {
               try {
-               
+                
                 if(!account){
                   return;
                 }
@@ -253,11 +253,7 @@ export default function Hero() {
             {btntext()}
           </button>
 
-          <CrossmintPayButton className="crossmint"
-                clientId="4c4e8528-d568-4cd3-bd0f-61ce64ca3f59"
-                mintConfig={{"type":"erc-721","totalPrice":Web3.utils.fromWei((qty*info?.cost).toString(), "ether"),"_mintAmount":qty}}
-                
-            />
+          
         </div>
       );
     } else {
@@ -319,7 +315,11 @@ export default function Hero() {
                 >
                   {show.buttonText}
                 </button>
+
+                
               )}
+
+              
             </div>
           </Modal.Body>
         </Modal>
@@ -342,8 +342,15 @@ export default function Hero() {
                     {active &&  <div className="supply">
                         {info.totalSupply.toString()}/500
                       </div>}
-                    { active   && showMintButtons()} 
+                    
+                    
                     </>}
+                    {showMintButtons()}
+                    <CrossmintPayButton className="crossmint"
+                clientId="4c4e8528-d568-4cd3-bd0f-61ce64ca3f59"
+                mintConfig={{"type":"erc-721","totalPrice":Web3.utils.fromWei((qty*info?.cost).toString(), "ether"),"_mintAmount":qty}}
+                mintTo= {account?account:null}
+            />
               </div>
               </div>
         
