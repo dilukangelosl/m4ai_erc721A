@@ -197,12 +197,12 @@ export default function Hero() {
             </button>
           </div>
 
-          <button
+        {!active && <ConnectModal/>}
+         {active &&  <button
             className="herobtn2"
             disabled={true}
             onClick={async () => {
               try {
-                
                 if(!account){
                   return;
                 }
@@ -251,7 +251,7 @@ export default function Hero() {
             disabled={!account && !loading}
           >
             {btntext()}
-          </button>
+          </button>}
 
           
         </div>
@@ -333,7 +333,7 @@ export default function Hero() {
                      <img src="/banner.gif" alt="" className="mintlogo"/> 
                    {!isSale &&  <Countdown date={cdate} renderer={renderer} />}
                   
-                   {isSale && !active &&  <ConnectModal />}
+                 
                     {isSale && active && <>
                     <h1 className="minttitle">{mintTitle()}</h1>
                     {/* <p className="mintdes">{mintDescription()} </p> */}
@@ -350,6 +350,7 @@ export default function Hero() {
                 clientId="4c4e8528-d568-4cd3-bd0f-61ce64ca3f59"
                 mintConfig={{"type":"erc-721","totalPrice":Web3.utils.fromWei((qty*info?.cost).toString(), "ether"),"_mintAmount":qty}}
                 mintTo= {account?account:null}
+                
             />
               </div>
               </div>
